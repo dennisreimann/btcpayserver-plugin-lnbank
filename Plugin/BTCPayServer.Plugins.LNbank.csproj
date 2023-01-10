@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>1.3.8</Version>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <!-- Plugin specific properties -->
+  <PropertyGroup>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+  </PropertyGroup>
+
+  <!-- This will make sure that referencing BTCPayServer doesn't put any artifact in the published directory -->
+  <ItemDefinitionGroup>
+    <ProjectReference>
+        <Properties>StaticWebAssetsEnabled=false</Properties>
+        <Private>false</Private>
+        <ExcludeAssets>runtime;native;build;buildTransitive;buildMultitargeting;contentFiles;buildTransitive</ExcludeAssets>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\btcpayserver\BTCPayServer\BTCPayServer.csproj">
+    </ProjectReference>
+    <EmbeddedResource Include="Resources\**" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
